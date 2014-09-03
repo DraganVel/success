@@ -53,10 +53,11 @@ var app = {
         console.log('scanning');
         // alert('scanning');
         
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        //var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.scan( function (result) { 
+        //scanner.scan( function (result) { 
 
+        cordova.plugins.barcodeScanner.scan( function( result ) {
             alert("We got a barcode\n" + 
             "Result: " + result.text + "\n" + 
             "Format: " + result.format + "\n" + 
@@ -81,9 +82,10 @@ var app = {
     },
 
     encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+        // var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
+        // scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
+        cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function( success ) {
             alert("encode success: " + success);
           }, function(fail) {
             alert("encoding failed: " + fail);
